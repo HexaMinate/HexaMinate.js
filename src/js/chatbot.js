@@ -1,12 +1,16 @@
-
 var nodefetch = require("node-fetch");
-
 class Chatbot {
     constructor(token = false) {
         if (!token) {
             throw {
-                "message": "Eror token not found"
+                message: `Tolong tambahkan token anda disini\n\n${__dirname}`
             };
+        } else {
+            if (String(token).split(":").length == 0) {
+                throw {
+                    message: `Format token salah tolong isi dengan benar ya`
+                };
+            }
         }
         this.url = `https://hexaminate.herokuapp.com/chatbot/api/${token}`
     }
