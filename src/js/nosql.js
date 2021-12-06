@@ -1,6 +1,7 @@
 
 var nodefetch = require("node-fetch");
 
+/// hello world nosql
 class Nosql {
     constructor(token = false) {
         if (!token) {
@@ -16,7 +17,8 @@ class Nosql {
         }
         this.url = `https://hexaminate.herokuapp.com/database/nosql/api/${token}`
     }
-
+    /// request method
+    /// can sasokaskas
     async request(method, parameters = {}) {
         var option = {
             'method': 'POST',
