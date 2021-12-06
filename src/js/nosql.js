@@ -17,7 +17,9 @@ class Nosql {
         }
         this.url = `https://hexaminate.herokuapp.com/database/nosql/api/${token}`
     }
+    
     /// request method
+
     /// can sasokaskas
     async request(method, parameters = {}) {
         var option = {

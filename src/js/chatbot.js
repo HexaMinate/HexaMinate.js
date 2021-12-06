@@ -42,9 +42,10 @@ class Chatbot {
         }
     }
 
-    async ask(text = "hello") {
+    async ask(text = "hello", parameters = {}) {
         var answer = await this.request("ask", {
-            "text": "hello world"
+            "text": text,
+            ...parameters
         });
         return answer;
     }

@@ -42,6 +42,10 @@ class Apis {
         }
     }
 
+    github = {
+        
+    }
+
     telegram = {
         makeKeyboard(m) {
             console.log(m);
