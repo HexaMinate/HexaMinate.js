@@ -11,7 +11,7 @@ class Chatbot {
         this.url = `https://hexaminate.herokuapp.com/chatbot/api/${token}`
     }
 
-    async request(method, parameters = false) {
+    async request(method, parameters = {}) {
         var option = {
             'method': 'POST',
             'headers': {
@@ -22,23 +22,28 @@ class Chatbot {
         if (parameters) {
             option["body"] = JSON.stringify(parameters)
         }
-        var api = `${url}/${method}`;
+        var api = `${this.url}/${method}`;
         var response = await nodefetch(api, option);
         if (response.status == 200) {
             return await response.json();
         } else {
             var msg = await response.json();
-            throw {
-                message: msg
-            };
+            if (msg.message) {
+                throw msg;
+            } else {
+                throw {
+                    "message": msg
+                };
+            }
         }
     }
 
-    async delete() {
-
-
+    async ask(text = "hello") {
+        var answer = await this.request("ask", {
+            "text": "hello world"
+        });
+        return answer;
     }
-
 
 }
 
